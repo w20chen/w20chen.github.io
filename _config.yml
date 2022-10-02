@@ -97,6 +97,10 @@ service-worker: true
 # 链接
 friends: [
     {
+        title: "Latest version of my blog",
+        href: "https://w20chen.github.io"
+    },
+    {
         title: "Legacy version of my blog",
         href: "https://moyesolntse.github.io"
     },
