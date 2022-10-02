@@ -11,7 +11,7 @@ tags:
 ---
 
 <audio id="audio" controls="" preload="none">
-      <source id="mp3" src="https://wchen0.github.io/music/Кино - Кончится лето.mp3">
+      <source id="mp3" src="https://w20chen.github.io/music/Кино - Кончится лето.mp3">
 </audio>
 
 ### 那些我尚未完成的歌
