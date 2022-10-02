@@ -1,0 +1,172 @@
+---
+layout: page
+title: "Resources"
+description: "電池沒電時，最先挨罵的，往往是時鐘。"
+header-img: "img/needle.png"
+---
+
+<!-- Language Selector -->
+<!-- <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英文 English </option>
+</select> -->
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+<p>
+Mathematics<br>
+<a href="http://immersivemath.com/ila/tableofcontents.html?">Linear Algebra</a><br>
+<a href="http://dec41.user.srcf.net/notes/">Cambridge Notes</a><br>
+<br>
+Fundamentals of C/C++<br>
+<a href="http://www-scf.usc.edu/~csci104/20142/docs/coding-guide.pdf">C++ Coding Guide</a><br>
+<a href="https://en.cppreference.com/">C++ Reference</a><br>
+<a href="http://www.cplusplus.com/">cplusplus</a><br>
+<a href="https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-160#:~:text=In%20C%2B%2B11%20and%20later%2C%20a%20lambda%20expression%E2%80%94often%20called,that%20are%20passed%20to%20algorithms%20or%20asynchronous%20methods.">Lambda Expression in C++</a><br>
+<br>
+Data Structure & Algorithm<br>
+<a href="https://visualgo.net/en">Visualized Algorithm</a><br>
+<a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Data Structure Visualization</a><br>
+<a href="https://sp21.datastructur.es/resources.html">CS 61B Data Structures</a><br>
+<a href="http://www-scf.usc.edu/~csci104/20142/resources.html">Data Structures and Object Oriented Design</a><br>
+<a href="http://timroughgarden.org/w16/w16.html">A Second Course in Algorithms</a><br>    
+<a href="http://people.seas.harvard.edu/~minilek/cs224/fall14/lec.html">Advanced Algorithms</a><br>
+<a href="https://wchen0.blog.luogu.org/">OJ notes</a><br>
+<br>
+Python<br>
+<a href="https://pythontutor.com/">Python Tutor: Visualize Python</a><br>
+<a href="https://python.iswbm.com/">Python Tutorial</a><br>
+<a href="https://docs.python.org/3/library/tk.html">Graphical User Interfaces with Tk</a><br>
+<a href="https://www.runoob.com/python/python-gui-tkinter.html">Python tkinter Tutorial</a><br>
+<a href="https://docs.opencv.org/2.4/doc/tutorials/tutorials.html">OpenCV Tutorial</a><br>
+<br>
+Neural Networks & Deep Learning<br>
+<a href="https://blog.csdn.net/attitude_yu/article/details/80963323">Deep Learning</a><br>
+<a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a><br>
+<a href="https://github.com/ChristosChristofidis/awesome-deep-learning#books">Awesome Deep Learning</a><br>    
+<a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Keras_Cheat_Sheet_Python.pdf">Keras Cheat Sheet Python</a><br>
+<br>
+Database<br>
+<a href="http://db.lcs.mit.edu/6.830/">MIT Database System</a><br>
+<a href="https://15445.courses.cs.cmu.edu/fall2020/">CMU Database System</a><br>
+<a href="http://coding-geek.com/how-databases-work/">How does a relational database work</a><br>
+<a href="https://www.w3school.com.cn/sql/index.asp">SQL Tutorial</a><br>
+<br>
+Miscellaneous<br>
+<a href="https://www.21xrx.com/full_stack/Css/index.html">CSS Tutorial</a><br>
+<a href="http://info.cern.ch/hypertext/WWW/TheProject.html">World Wide Web</a><br>
+<a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">Beautiful Soup</a><br>
+<a href="https://regex101.com/">Regular Expression</a><br>
+<a href="https://pdos.csail.mit.edu/6.824/">Distributed Systems</a><br>
+<a href="https://cs144.github.io/">Introduction to Computer Networking</a><br> 
+<a href="https://cs61a.org/">Structure and Interpretation of Computer Programs (SICP)</a><br>
+<a href="https://cs61c.org/su21/">Great Ideas in Computer Architecture (Machine Structures)</a><br>
+<a href="http://web.stanford.edu/~ouster/cgi-bin/cs140-spring14/index.php">Operating Systems</a><br>
+<a href="https://web.stanford.edu/class/cs231a/">Computer Vision From 3D Reconstruction to Recognition</a><br>
+<a href="https://www.eecs.harvard.edu/htk/phdadvice/">Useful Advice</a><br>
+<br>
+<a href="https://github.com/prakhar1989/awesome-courses"><strong>More Resources</strong></a><br> 
+</p>
+
+<!-- 1、./是当前目录 2、../是父级目录 3、/是根目录 -->
+        
+</div>
+
+<!-- English Version -->
+<!-- <div class="en post-container">
+    <h5>Talks</h5>
+    <ul>
+    <li><a href="https://github.com">GitHub</a></li>
+    <li><a href="http://jekyll.com.cn/">jekyll</a></li>
+    <li><a href="https://pages.github.com/">GitHub Pages</a></li>
+    <li><a href="https://  .github.io">  </a></li>
+    </ul>
+</div> -->
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
+
+
+<!-- Gitalk 评论 start  -->
+{% if site.gitalk.enable %}
+<!-- Gitalk link  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+    <script type="text/javascript">
+    var gitalk = new Gitalk({
+    clientID: '{{site.gitalk.clientID}}',
+    clientSecret: '{{site.gitalk.clientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.owner}}',
+    admin: ['{{site.gitalk.admin}}'],
+    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+    id: 'resources',
+    });
+    gitalk.render('gitalk-container');
+</script>
+{% endif %}
+<!-- Gitalk end -->
+
+ <!-- disqus 评论框 start  -->
+{% if site.disqus.enable %}
+
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus.username}}";
+    var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
+
