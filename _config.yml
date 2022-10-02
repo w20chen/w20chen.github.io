@@ -4,15 +4,15 @@ SEOTitle: Chen's Blog
 header-img: img/home-bg-art.jpg
 email: email@weitian.chen@qq.com
 description: "Chen's Blog"
-keyword: "Chen,wchen0,wchen"
-url: "https://wchen0.github.io"          # your host, for absolute URL
-baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/wchen0" # you code repository
+keyword: "Chen,wchen"
+url: "https://w20chen.github.io"            # your host, for absolute URL
+baseurl: ""                                 # for example, '/blog' if your blog hosted on 'host/blog'
+github_repo: "https://github.com/w20chen"   # you code repository
 
 # Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
+sidebar: true                               # whether or not using Sidebar.
 sidebar-about-description: "橋都堅固，隧道都光明"
-sidebar-avatar: /img/Logo.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/Logo.png               # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -62,11 +62,11 @@ input: GFM                            # use Github Flavored Markdown !important
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 238310425e6ccddb9090                          #生成的clientID
-  clientSecret:   78d9022fb1a89d2bc19d7f0634015f95a57647fd   #生成的clientSecret
-  repo: wchen0.github.io    #仓库名称
-  owner: wchen0    #github用户名
-  admin: wchen0
+  clientID: 3f6b473b2781da0291cc                          #生成的clientID
+  clientSecret:   d13aeacf78fbce086045ab9a30c7005bde9fec4d   #生成的clientSecret
+  repo: w20chen.github.io    #仓库名称
+  owner: w20chen    #github用户名
+  admin: w20chen
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
@@ -99,6 +99,10 @@ friends: [
     {
         title: "Legacy version of my blog",
         href: "https://moyesolntse.github.io"
+    },
+    {
+        title: "A duplicate version of my blog",
+        href: "https://wchen0.github.io"
     },
     {
         title: "Instagram",
