@@ -19,7 +19,7 @@ function loopy() {
         sWord = prompt("Please input the correct password.") 
         if (sWord == null) {
 		alert("Returning to index")
-		window.location.href = 'https://wchen0.github.io';
+		window.location.href = 'https://w20chen.github.io';
 		window.event.returnValue = false
         }
 	else {

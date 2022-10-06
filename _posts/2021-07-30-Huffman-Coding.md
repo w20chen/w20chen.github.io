@@ -12,7 +12,7 @@ tags:
 ### Keynote
 Step1: Acquire the frequency of characters<br>
 Step2: Use a heap to build up the Huffman Tree, according to characters' frequencies.<br>
-Step3: Use DFS to print the path of each leaf-node.<br>
+Step3: DFS to print the path of each leaf-node.<br>
 
 ### Result
 ```
@@ -154,7 +154,8 @@ bool cmp(root_node p1, root_node p2) {
 }
 
 void build_heap(void) {
-	//push an initialized root_node into a vector and make the vector into a heap
+	//push an initialized root_node into a vector 
+	//and make the vector into a heap
 	heap.num = 0;
 	for (int i = 0; i <= _ASCII_MAX_; i++) {
 		if (times[i] < 1) continue;
@@ -175,10 +176,12 @@ void build_tree(void) {
 	build_heap();
 	for (;;) {
 		if (heap.num <= 1) break; 
-		//end the loop when there is only one root (which is the root of Huffman Tree)
+		//end the loop when there is only one root 
+		//(which is the root of Huffman Tree)
 		root_node temp1 = heap.base[0];
 		std::pop_heap(heap.base.begin(), heap.base.end(), cmp);
-		//swap the first and the last root_node and make all nodes except the last into a new heap
+		//swap the first and the last root_node 
+		//and make all nodes except the last into a new heap
 		heap.base.pop_back();
 		//the last one got deleted
 		heap.num--;
@@ -201,7 +204,8 @@ std::deque<int> s;
 
 void DFS(tree_node* root) {
 	if (root->lchild == nullptr) {
-		//in a Huffman Tree, if left child isn't null, nor is right child.
+		//in a Huffman Tree, 
+		//if left child isn't null, nor is right child.
 		//print the stack
 		fprintf(fp_d, "%c\t", root->c);
 		for (int i = 0; i < s.size(); i++) {
@@ -216,7 +220,7 @@ void DFS(tree_node* root) {
 		DFS(root->lchild);
 		s.push_back(1);
 		DFS(root->rchild);
-		//the stack has been already empty when you go back to the major root
+		//the stack has been empty when back to the major root
 		if (!s.empty()) s.pop_back();
 	}
 }

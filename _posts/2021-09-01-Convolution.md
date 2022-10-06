@@ -11,8 +11,8 @@ tags:
 
 #### Convolution
 
-<a href="https://wchen0.github.io/conv.pdf">View PDF</a>
+<a href="/documents/conv.pdf">View PDF</a>
 
-<object data="https://wchen0.github.io/conv.pdf" type="application/pdf" width="100%" height="100%">
-　　<iframe src="https://wchen0.github.io/conv.pdf" width="100%" height="100%"></iframe>
+<object data="/documents/conv.pdf" type="application/pdf" width="100%" height="100%">
+　　<iframe src="/documents/conv.pdf" width="100%" height="100%"></iframe>
 </object>

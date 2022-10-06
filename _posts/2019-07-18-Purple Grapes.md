@@ -17,7 +17,7 @@ tags:
 
 ## 紫葡萄 (2019-07-18)
 
-<blockquote>献给---</blockquote>
+<blockquote>献给____</blockquote>
 
 又见面了，七月的紫葡萄<br/>
 圆润可爱的珍珠、玉石与玛瑙<br/>

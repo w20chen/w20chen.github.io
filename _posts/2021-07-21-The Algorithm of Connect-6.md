@@ -1,15 +1,16 @@
 ---
-layout:     	post
-title: 	Algorithm of Connect-6
+layout:     post
+title: 		Algorithm of Connect-6
 subtitle: 	Greedy Algorithm
 date:      	2021-07-21
 author:    	Chen
 header-img: img/post-bg-unix-linux.jpg
-catalog:   true
+catalog:	true
 tags:
     - CS
 ---
-# Algorithm of Connect 6
+
+### Algorithm of Connect-6
 
 <img src="/img/RobotE.png" width="800" height="600" /><br>
 
