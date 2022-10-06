@@ -11,7 +11,7 @@ github_repo: "https://github.com/w20chen"   # you code repository
 
 # Sidebar settings
 sidebar: true                               # whether or not using Sidebar.
-sidebar-about-description: "橋都堅固，隧道都光明"
+sidebar-about-description: "橋都堅固 隧道都光明"
 sidebar-avatar: /img/Logo.png               # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -97,11 +97,11 @@ service-worker: true
 # 链接
 friends: [
     {
-        title: "Latest version of my blog",
+        title: "Beta version",
         href: "https://w20chen.github.io"
     },
     {
-        title: "Legacy version of my blog",
+        title: "Legacy version",
         href: "https://moyesolntse.github.io"
     },
     {
