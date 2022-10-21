@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\_includes",
+    "\\_layouts"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\_layouts\\keynote.html",
   "PreviewInSolutionExplorer": false
 }
