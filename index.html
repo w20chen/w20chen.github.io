@@ -3,9 +3,10 @@ layout: page
 description: "2020"
 ---
 
-<font face=consolas><strong><a href="https://moyesolntse.github.io">Legacy version</a></strong></font> 
-/ 
-<font face=consolas><strong><a href="https://w20chen.github.io">Beta version</a></strong></font><br>
+<font face=consolas><strong><a href="https://moyesolntse.github.io">Legacy version</a></strong></font>
+/
+<font face=consolas><strong><a href="https://w20chen.github.io">Beta version</a></strong></font>
+<br>
 
 {% for post in paginator.posts %}
 <div class="post-preview">
@@ -39,7 +40,7 @@ description: "2020"
     {% endif %}
     {% if paginator.next_page %}
     <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Previous Posts &rarr;</a>
     </li>
     {% endif %}
 </ul>
@@ -48,6 +49,8 @@ description: "2020"
 
 
 <!-- 下面是用来统计访问量的（Chen） -->
+<br>
+<br>
 <script language=JavaScript>
 
     var caution = false
@@ -95,6 +98,6 @@ description: "2020"
     else
         visits = parseInt(visits) + 1
     setCookie("counter", visits, now)
-    document.write("You have visited this site " + visits + " time(s).")
+    document.write("You have visited this page " + visits + " time(s).")
 
 </script>

@@ -10,7 +10,7 @@ tags:
     - Nonsense
 ---
 
-I made some seals.(篆章)     
+I made some seals.(篆章)
 
 #### 花好月圓人壽     
 <img src="/img/stamp1.png" width=200 />
