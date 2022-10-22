@@ -22,14 +22,14 @@ function loopy() {
 		window.location.href = 'https://w20chen.github.io';
 		window.event.returnValue = false
         }
-	else {
-		md = md5(sWord)
-		if (md == "76a2173be6393254e72ffa4d6df1030a" || 
-			md == "30983fece105466d39c08e151da61104" || 
-			md == "c08a6ee5d602cd7916c8b7d3cef8af98") {
-			break;
+		else {
+			md = md5(sWord)
+			if (md == "76a2173be6393254e72ffa4d6df1030a" || 
+				md == "30983fece105466d39c08e151da61104" || 
+				md == "c08a6ee5d602cd7916c8b7d3cef8af98") {
+				break;
+			}
 		}
-	}
     }
     alert("Password is correct!")   
 }
