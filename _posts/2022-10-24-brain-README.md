@@ -12,7 +12,7 @@ tags:
 
 ## 如何生成 Brainf\*ck 程序
 <a href="https://github.com/wchen0/BF/">仓库地址</a><br>
-其中 `var.h var.cpp` 是生成 BF 的库。compiler.cpp 是一个简易的 BF 编译器。     
+其中 `var.h var.cpp` 是生成 BF 的库。`compiler.cpp` 是一个简易的 BF 编译器。     
 此程序提供了生成 Brainf\*ck 程序的简单方法。       
 
 已经实现：
@@ -42,10 +42,13 @@ int main(void) {
     test();
 
 #ifndef __linux___
+
     freopen("CON", "w", stdout);
 #else
+
     freopen("/dev/tty", "w", stdout);
 #endif
+    
     FILE* fin = fopen("tmp.bf", "r");
     FILE* fout = fopen("out.bf", "w");
     optimize(fin, fout);
