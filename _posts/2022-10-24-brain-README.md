@@ -12,21 +12,21 @@ tags:
 
 ## 如何生成 Brainf\*ck 程序
 此项目地址为：<a href="https://github.com/wchen0/BF/">仓库地址</a><br>
-其中 `var.h var.cpp` 是生成 BF 的库。此项目提供了生成 Brainf\*ck 程序的简单方法。       
+其中 `var.h var.cpp` 是生成 BF 的库。此项目提供了生成 Brainfuck 程序的简单方法。       
 `compiler.cpp` 是一个简易的 BF 编译器。      
 <a href="https://rextester.com/l/brainfuck_online_compiler">网址</a>是一个比较好的 BF 在线编译器。         
 
 已经实现：
 
-- while(!x) 语句
-- if(!x) 和 if(x) 语句
-- 整型 +、-、\*、/
+- `while(!x)` 语句
+- `if(!x)` 和 `if(x)` 语句
+- 整型 `+`、`-`、`\*`、`/`
 - 整型大小比较及其他基本操作
 - 部分运算符重载，**部分功能尚未实现**
 - ~~数组~~，**尚未实现**，不能通过变量访问数组
 
 ## 关于 Brainf\*ck
-从维基百科上截取如下内容。
+从维基百科上截取如下内容。简而言之，BF 就是仅使用 8 种字符，描述程序的一种语言。     
 <h4><span class="mw-headline" id="Commands">Commands</span><span class="mw-editsection"><span class="mw-editsection-bracket"></span></span></h4>
 <p>The eight language commands each consist of a single character:
 </p>
@@ -122,7 +122,8 @@ tags:
 
 >BF 在硬件上的结构非常简单，这也是它的代码异常复杂的一个原因。
 
-## 如何使用（如何按照我的需求，生成BF程序）
+## 如何使用
+>如何根据你的需求，生成对应的 Brainfuck 程序？
 #### 调用 var.h 生成 BF 代码
 在 `main.cpp` 的 `main` 函数中调用 `var.h` 提供的接口，即可在 `out.bf` 中生成对应的 `bf` 代码。      
 `optimize` 函数是对 `tmp.bf` 的优化，它删除冗余的 `<`,`>` 记号，生成 `out.bf`。
@@ -206,8 +207,8 @@ val.input();
 
 val.greater_eq('0', flag);      // flag = (val >= '0');
 flag.if_begin();                // if(flag == true)
-val.greater('9', flag);         // flag = (val > '9);
-flag.flip();                    // flag = !flag
+    val.greater('9', flag);     // flag = (val > '9);
+    flag.flip();                // flag = !flag
 flag.if_end();
 flag.output_ascii();
 ```
@@ -313,13 +314,115 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-BF 代码很长，这里不展示。
+该冒泡排序算法对应的 BF 代码很长，这里不展示。
+
+#### 打印数字字符画
+<a href="/documents/ascii_art.bf">BF 代码</a> 
+```cpp
+var a[15];
+var flag;
+var n;
+var endl('\n');
+n.input();
+n -= '0';
+for (int i = 0; i < 15; i++) {
+    a[i].set(' ');
+}
+
+n.equal(0, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 4 || i == 7 || i == 10) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(1, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13) {
+            a[i].set('#');
+        }
+    }
+flag.if_end();
+
+n.equal(2, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 3 || i == 4 || i == 10 || i == 11) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(3, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 3 || i == 4 || i == 10 || i == 9) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(4, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 1 || i == 4 || i == 10 || i == 9 || i == 13 || i == 12) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(5, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 5 || i == 4 || i == 10 || i == 9) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(6, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 5 || i == 4 || i == 10) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(7, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 7 || i == 4 || i == 10 || i == 9 || i == 13 || i == 12) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(8, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 4 || i == 10) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+n.equal(9, flag);
+flag.if_begin();
+    for (int i = 0; i < 15; i++) {
+        if (i == 4 || i == 10 || i == 9) continue;
+        a[i].set('#');
+    }
+flag.if_end();
+
+for (int i = 0; i < 15; i++) {
+    a[i].output();
+    a[i].output();
+    if (i % 3 == 2) endl.output();
+}
+```
 
 ## 结语
 由于时间有限，写得比较粗糙。      
-最终的效果并不完美。极端情况下，BF 代码过于冗长，但此程序可以保证 BF 代码的正确性。     
+最终的效果并不完美。极端情况下，BF 代码过于冗长，但此程序可以保证 BF 代码的正确性。      
+虽然 BF 代码比较长，占据篇幅较大的是 `<` 和 `>`，但这并不代表 BF 程序需要很多内存，**内存通常不会超限**。     
 若要实现一个 BF 程序，比如高级的排序算法，还是有难度的，需要再封装一些数据结构。      
-由于部分的重载运算符函数会增加额外的中间变量，故暂时没有实现（把所有对象都理解为引用，是一个更好的新思路）。     
+由于部分的重载运算符函数会增加额外的中间变量，故暂时没有实现（把所有对象都理解为引用，是一个更好的新思路，或许有更好的实现）。     
 
 
 2022-10-24
