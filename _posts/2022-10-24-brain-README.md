@@ -26,9 +26,9 @@ tags:
 - ~~数组~~，**尚未实现**，不能通过变量访问数组
 
 ## 关于 Brainf\*ck
-从维基百科上截取如下内容。简而言之，BF 就是仅使用 8 种字符，描述程序的一种语言。     
+**<a href="https://w20chen.github.io/2022/10/22/brain/">上一篇文章</a>对 Brainfuck 有一些简单的介绍，但并不充分。**这里从维基百科上截取了如下内容。简而言之，BF 就是仅使用 8 种字符，描述程序的一种语言。它和高级语言相去甚远，近于机器级语言，但访问内存又异常地麻烦。     
 <h4><span class="mw-headline" id="Commands">Commands</span><span class="mw-editsection"><span class="mw-editsection-bracket"></span></span></h4>
-<p>The eight language commands each consist of a single character:
+<p>The 8 language commands each consist of 1 single character:
 </p>
 <table class="wikitable">
 <tbody><tr>
@@ -77,6 +77,8 @@ tags:
 <td>If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it <i>back</i> to the command after the <i>matching</i> <code>[</code> command.
 </td></tr></tbody></table>
 
+Brainfuck 需要机器有两个"探头"：一个是 pc，另一个是 data pointer。pc 总是指向下一条执行的指令，pc 对于编程的人是不可见的；data pointer 是读写内存的探头，编程时需要被挪到合适的地址。     
+
 <table class="wikitable">
 <tbody><tr>
 <th style="text-align:center;">brainfuck command
@@ -120,7 +122,30 @@ tags:
 <td><code class="mw-highlight mw-highlight-lang-c mw-content-ltr" dir="ltr"><span class="p">}</span><span class="w"></span></code>
 </td></tr></tbody></table>
 
->BF 在硬件上的结构非常简单，这也是它的代码异常复杂的一个原因。
+>BF 计算机的硬件实现非常简单，这也是它的代码异常复杂的一个原因。
+
+初始，所有内存单元均为 0，若要让 #2 为 2，#3 为 5，则 Brainfuck 代码为：
+```
+>>++>+++++
+```
+此时 data pointer 指向 #3，若要清零 #2，应当接着写：
+```
+<[-]
+```
+然后，若要将 #4 置为 35，可以这么写：
+```
+>[>+++++++<-]
+```
+这将会使 #4 为 35，但 #3 被清零。（想想为什么？）      
+ascii 35 为 `'#'`，我们输出 #4 将会得到 `'#'`，整个程序如下：
+```
+>>++>+++++      #2 == 2; #3 == 5
+<[-]            #2 == 0
+>[>+++++++<-]   #3 == 35
+>               move the data pointer to #4
+.               output #4
+```
+你可以去<a href = "https://rextester.com/l/brainfuck_online_compiler">在线编译</a>或使用 `compiler.cpp` 进行验证。
 
 ## 如何使用
 
