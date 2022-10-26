@@ -145,7 +145,8 @@ ascii 35 为 `'#'`，我们输出 #4 将会得到 `'#'`，整个程序如下：
 >               move the data pointer to #4
 .               output #4
 ```
-你可以去<a href = "https://rextester.com/l/brainfuck_online_compiler">在线编译</a>或使用 `compiler.cpp` 进行验证。
+你可以去<a href = "https://rextester.com/l/brainfuck_online_compiler">在线编译</a>或使用 `compiler.cpp` 进行验证。     
+你一定已经发现，人工编写 Brainfuck 代码是费力的，那么如何自动的生成 Brainfuck 代码呢？       
 
 ## 如何使用
 
@@ -199,7 +200,7 @@ ret.output_ascii();
 ```
 
 **以上代码描述的 BF 代码如下：**
-```c
+```py
 ++++++++[>++++++<-]>+++++>,>>[-]<<[->>+>+<<<]>>>[-<<<+>>>][-][-]<<<<[-
 >>>>+>+<<<<<]>>>>>[-<<<<<+>>>>>][-]<<<[-]>[>>[-]<[->+>+<<]>>[-<<+>>][-
 ]+>[-]<<[->>+>+<<<]>>>[-<<<+>>>][-]<[[-]<<[-]>[-]>]>[-]<<[->>+>+<<<]>>
@@ -256,7 +257,7 @@ x.while_begin();
 x.while_end();
 ```
 **以上代码描述的 BF 代码如下：**
-```c
+```cmd
 ++++++++[>>++++++<<-]>>+++++<,<++++++++[>------<-]>[->.<]
 ```
 
@@ -296,7 +297,7 @@ v4.output();v5.output();v6.output();v4.output();
 v7.output();v3.output();v8.output();
 ```
 **BF 程序如下：**
-```
+```cpp
 ++++++++[>+++++++++++++<-]++++++++[>>++++++++++++<<-]
 >>+++++<<++++++++[>>>+++++++++++++<<<-]>>>++++<<<++++
 ++++[>>>>+++++++++++++<<<<-]>>>>+++++++<<<<++++++++[>
@@ -344,12 +345,10 @@ for (int i = 0; i < 10; i++) {
 该冒泡排序算法对应的 BF 代码很长，这里不展示。
 
 #### 打印数字字符画
-<a href="/documents/ascii_art.bf">BF 代码</a> 
+<a href="/documents/ascii_art.bf">BF 代码</a>     
+输入一个数字，生成对应字符画。      
 ```cpp
-var a[15];
-var flag;
-var n;
-var endl('\n');
+var a[15], flag, n, endl('\n');
 n.input();
 n -= '0';
 for (int i = 0; i < 15; i++) {
@@ -438,8 +437,7 @@ flag.if_begin();
 flag.if_end();
 
 for (int i = 0; i < 15; i++) {
-    a[i].output();
-    a[i].output();
+    a[i].output(); a[i].output();
     if (i % 3 == 2) endl.output();
 }
 ```
