@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Brainfuck interpreter</title>
+  <meta http-equiv="Content-Style-Type" content="text/css"/>
+  <meta http-equiv="Content-Script-Type" content="application/javascript"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="/res/style/style.css" type="text/css"/>
+  <link rel="preload" href="/res/style/avenir-lt-std-roman.otf" as="font" type="font/otf"/>
+<style type="text/css">
+article #inputs p, article #outputs p {
+  margin-bottom: 0.5em;
+}
+article #outputs td:first-child {
+  white-space: pre;
+}
+article #outputs pre, article #examples pre {
+  padding-left: 0em;
+  border-left: none;
+}
+article #outputs pre {
+  max-height: 8em;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+article #outputs pre strong, article #output-memory tr.active {
+  background-color: #80C0FF;
+  font-weight: inherit;
+}
+article #output-memory table {
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+article #output-memory tbody {
+  font-size: 70%;
+}
+article #output-memory tbody td {
+  padding-top: 0em;
+  padding-bottom: 0em;
+  text-align: right;
+}
+</style>
+</head>
+
+<body>
+  
+<div class="vert-main">
+<div class="horz-main">
+<article>
+<h1>Brainfuck interpreter</h1>
+
+<h2 id="program">Program</h2>
+<table id="inputs" class="noborder">
+  <tbody>
+    <tr>
+      <td><label for="input-code">Program code:</label></td>
+      <td><textarea id="input-code" cols="50" rows="6" style="width:40em; height:8em"></textarea></td>
+    </tr>
+    <tr>
+      <td><label for="input-text">Input text:</label></td>
+      <td><textarea id="input-text" cols="50" rows="4" style="width:40em; height:4em"></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button onclick="app.doExecute();">Execute</button></td>
+    </tr>
+  </tbody>
+</table>
+<table id="outputs" class="noborder" style="display:none">
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+        <button onclick="app.doEditCodeInput();">Edit code/input</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Instructions:</td>
+      <td id="output-instructions">
+        <p></p>
+        <pre></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>Memory:</td>
+      <td id="output-memory">
+        <p>
+          <button>↑</button>
+          <button>↓</button>
+          <span></span>
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Address</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Input text:</td>
+      <td id="output-input">
+        <p></p>
+        <pre></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>Output text:</td>
+      <td id="output-text">
+        <p></p>
+        <pre></pre>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button id="execute-step">Step</button>
+        <button id="execute-run">Run</button>
+        <button id="execute-pause">Pause</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script src="brainfuck-interpreter.js"></script>
+
+<h2>Description</h2>
+<p>This is an interpreter for the <a href="https://www.muppetlabs.com/~breadbox/bf/" title="The Brainfuck Programming Language">brainfuck programming language</a>, written in JavaScript. It allows you to see the internal state of the brainfuck virtual machine.</p>
+<p>Some important behaviors of this interpreter implementation:</p>
+<ul>
+  <li><p>In the input program code, any character outside of the 8 brainfuck commands (<code>&lt;>+-[].,</code>) are ignored. Effectively, most characters are code comments.</p></li>
+  <li><p>During execution, the memory is unbounded for positive addresses.</p></li>
+  <li><p>Attempting to decrement the memory address below 0 will raise an exception and halt the execution with no chance for recovery.</p></li>
+  <li><p>Each memory cell is an unsigned 8-bit integer. The values wrap around upon overflow/<wbr/>underflow.</p></li>
+  <li><p>The input is captured when the program is loaded, and cannot be changed afterward.</p></li>
+  <li><p>Reading past the end of the input yields 0. This is indistinguishable from reading the byte value 0.</p></li>
+  <li><p>The interpreter is not optimized for speed; it's optimized for a readable codebase. A fast web-based interpreter should use WebAssembly, and a fast desktop interpreter should use C/C++/Rust/<wbr/>assembly.</p></li>
+</ul>
+
+<h2>Examples</h2>
+<table id="examples">
+  <thead>
+    <tr>
+      <th>Title &amp; demo</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#" title="Load code" onclick="event.preventDefault(); app.doDemo('++++++++++[>+++++++>++++++++++>+++>++++&lt;\n&lt;&lt;&lt;-]>++.>+.+++++++..+++.>>++++.&lt;++.&lt;+++\n+++++.--------.+++.------.--------.>+.');">Hello world</a></td>
+      <td><pre><code>++++++++++[>+++++++>++++++++++>+++>++++&lt;
+&lt;&lt;&lt;-]>++.>+.+++++++..+++.>>++++.&lt;++.&lt;+++
++++++.--------.+++.------.--------.>+.</code></pre></td>
+    </tr>
+    <tr>
+      <td><a href="#" title="Load code" onclick="event.preventDefault(); app.doDemo(',[.,]');">Echo the input</a></td>
+      <td><pre><code>,[.,]</code></pre></td>
+    </tr>
+    <tr>
+      <td><a href="#" title="Load code" onclick="event.preventDefault(); app.doDemo('>,[>,]&lt;[.&lt;]');">Reverse the input</a></td>
+      <td><pre><code>>,[>,]&lt;[.&lt;]</code></pre></td>
+    </tr>
+    <tr>
+      <td><a href="#" title="Load code" onclick="event.preventDefault(); app.doDemo('+[]');">Infinite loop</a></td>
+      <td><pre><code>+[]</code></pre></td>
+    </tr>
+    <tr>
+      <td><a href="#" title="Load code" onclick="event.preventDefault(); app.doDemo('- [ >[->]+ +[-&lt;+]- ]');">Binary counter</a> <a href="/page/binary-counter-in-brainfuck">(explanation)</a></td>
+      <td><pre><code>- [ >[->]+ +[-&lt;+]- ]</code></pre></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>More info</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Brainfuck">Wikipedia: Brainfuck</a></li>
+</ul>
+</article>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-23532931-1" async="async"></script>
+<script>window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} gtag("js",new Date()); gtag("config","UA-23532931-1");</script>
+</body>
+</html>
